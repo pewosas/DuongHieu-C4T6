@@ -1,3 +1,4 @@
+
 player = {
     "NAME": "PLAYER",
     "ATK": 55,
@@ -14,12 +15,28 @@ orc = {
     "INT": 50
 }
 
+inventory = []
+grass_shoes = {
+    "NAME": "grass_shoes",
+    "DEF": + 5,
+    "HP": +10
+}
+
+steel_gaulet = {
+    "NAME": "steel_gaulet",
+    "ATK": + 10,
+    "INT": -5
+}
+
+inventory.append(grass_shoes)
+inventory.append(steel_gaulet)
+
 print("You are on your adventure")
 print("Suggest:")
 print("1.GO AHEAD")
 print("2.GO HOME")
-cmd = input("Your choice:(1, 2)?")
 
+cmd = input("Your choice:(1, 2)?")
 if cmd == "1":
     print(".There are two ways.")
     print("1.THE FOREST")
@@ -62,13 +79,20 @@ if cmd == "1":
                 cmd = input("Your choice:")
 
                 if cmd == "1":
-                    print("ORC was killed")
-                    print("You continue your adventure")
-                    print("HAPPY ENDING")
+                    combat(player, orc)
+                    if orc["HP"] <= 0:
+                        print("You got one item^^")
+                        jack_fruit_yogurt = {
+                            "NAME": "jack_fruit_yogurt",
+                            "INT": +10,
+                            "DEF": +5
+                        }
+
+                    inventory.append('jack_fruit_yogurt')
 
                 elif cmd == "2":
                     print("ORC runs away")
-                    print("You ")
+                    print("You win")
 
             elif orc["HP"] >= 0:
                 print("You was killed")
@@ -83,12 +107,3 @@ elif cmd == "2":
     print("You are not ingenious")
     print("You DIED")
     print("GAME OVER")
-
-
-
-
-
-
-
-
-
